@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "react-medium-image-zoom/dist/styles.css";
 
 @theme {
   --color-bg: #0d0e10;
@@ -46,6 +47,11 @@
 
 @utility animate-fade_up {
   animation: var(--animate-fade-up);
+}
+
+[data-rmiz-modal-overlay] {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(4px);
 }
 
 @layer base {
