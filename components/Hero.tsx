@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { Github, Linkedin, Twitter, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Twitter, ArrowUpRight, ArrowDown, ArrowDownRight } from "lucide-react";
+import XIcon from "@/components/icons/xicon";
 
 const socials = [
-  { label: "Twitter", href: "https://x.com/byashil", icon: Twitter },
+  { label: "Twitter", href: "https://x.com/byashil", icon: XIcon, },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/ashil-rahim-aa34a3305/",
@@ -17,7 +18,7 @@ export default function Hero() {
       <div className="group relative mb-8 h-16 w-16">
         <div className="overflow-hidden rounded-full border border-border bg-surface">
           <Image
-            src="https://framerusercontent.com/images/ilCMP39YWgHtbmD4oUOHmsNbUA.jpg"
+            src="/images/dp.jpg"
             alt="Ashil c k"
             width={64}
             height={64}
@@ -38,6 +39,8 @@ export default function Hero() {
         >
           Ashil c k
         </h1>
+
+
 
         <p
           className="mt-3 w-full animate-fade_up text-[14px] leading-relaxed text-muted"
@@ -64,9 +67,7 @@ export default function Hero() {
             {/* Icon */}
             <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white">
               <Icon
-                size={17}
-                strokeWidth={1.75}
-                className="text-black transition-opacity duration-200 group-hover:opacity-60 group-active:opacity-80"
+                className="h-4.25 w-4.25 text-black transition-opacity duration-200 group-hover:opacity-60 group-active:opacity-80"
               />
             </div>
 
@@ -83,7 +84,7 @@ export default function Hero() {
         style={{ animationDelay: "320ms" }}
       >
         See the work
-        <ArrowUpRight size={14} />
+        <ArrowDownRight size={14} />
       </a>
     </section>
   );
