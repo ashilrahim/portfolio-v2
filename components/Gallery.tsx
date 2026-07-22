@@ -4,8 +4,8 @@ import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
 
 const shots = [
-  { src: "/images/shot-1.png", w: 3840, h: 2160 },
   { src: "/images/shot-2.png", w: 3840, h: 2160 },
+  { src: "/images/shot-1.png", w: 3840, h: 2160 },
   { src: "/images/shot-3.png", w: 1968, h: 1400 },
   { src: "/images/shot-4.png", w: 1600, h: 1200 },
   { src: "/images/shot-5.png", w: 3840, h: 2160 },
@@ -53,7 +53,7 @@ export default function Gallery() {
                 alt={`Project screenshot ${i + 1}`}
                 width={shot.w}
                 height={shot.h}
-                quality={100}
+                // quality={100}
                 sizes="100vw"
                 className="h-auto w-full cursor-zoom-in object-cover"
               />
