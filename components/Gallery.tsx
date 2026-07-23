@@ -9,7 +9,7 @@ const items = [
 
   { type: "video", src: "/videos/shinybutton2.mp4" },
 
-  
+
   { type: "image", src: "/images/shot-5.png", w: 3840, h: 2160 },
   { type: "image", src: "/images/shot-4.png", w: 1600, h: 1200 },
 
@@ -22,9 +22,7 @@ const items = [
   { type: "image", src: "/images/shot-3.png", w: 1968, h: 1400 },
   { type: "image", src: "/images/shot-8.png", w: 2400, h: 1124 },
   { type: "image", src: "/images/shot-11.png", w: 2400, h: 1600 },
-  { type: "image", src: "/images/shot-9.png", w: 2880, h: 2160 },
-  { type: "image", src: "/images/shot-10.png", w: 2880, h: 1732 },
-  
+
   { type: "image", src: "/images/shot-12.png", w: 2880, h: 1200 },
   { type: "image", src: "/images/shot-13.png", w: 2880, h: 1750 },
 ] as const;
