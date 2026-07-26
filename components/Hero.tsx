@@ -1,6 +1,11 @@
 import Image from "next/image";
 import { Github, Linkedin, Twitter, ArrowUpRight, ArrowDown, ArrowDownRight } from "lucide-react";
 import XIcon from "@/components/icons/xicon";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 const socials = [
   { label: "Twitter", href: "https://x.com/byashil", icon: XIcon, },
@@ -15,22 +20,21 @@ const socials = [
 export default function Hero() {
   return (
     <section className="flex flex-col items-start text-left">
-      <div className="group relative mb-8 h-16 w-16">
-        <div className="overflow-hidden rounded-full border border-border bg-surface">
-          <Image
-            src="/images/dp.jpg"
-            alt="Ashil c k"
-            width={64}
-            height={64}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-            priority
-          />
-        </div>
 
-        <span className="pointer-events-none absolute -right-14 -top-4 rounded-full border border-border bg-white px-2 py-1 text-[11px] text-[#666666] opacity-0 shadow-sm transition-all duration-200 group-hover:translate-y-[-2px] group-hover:opacity-100">
-          What's up?
-        </span>
+      <div className="relative w-fit mb-8 ">
+        {/* Main Avatar */}
+        <Avatar className="ring-background h-16 w-16 ">
+          <AvatarImage src="/images/dp.jpg" alt="User story" />
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+        <span className="border-background absolute right-1 bottom-0 size-3 rounded-full border-2 bg-green-500" />
+
+
+
       </div>
+
+
+
 
       <div>
         <h1
@@ -43,7 +47,7 @@ export default function Hero() {
 
 
         <p
-          className="mt-3 w-full animate-fade_up text-[14px] leading-relaxed text-muted"
+          className="mt-3 w-full animate-fade_up leading-relaxed text-muted"
           style={{ animationDelay: "160ms" }}
         >
           I create digital products with a focus on <span className="text-ink">design</span>, usability, and performance. From client work to personal projects, I&apos;ve built experiences across web and product design always exploring better ways to turn ideas into products people love.

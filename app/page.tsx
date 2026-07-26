@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Contact from "@/components/Contact";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
+import CopyEmail from "@/components/CopyEmail";
 
 export default function Home() {
   return (

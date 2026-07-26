@@ -25,14 +25,14 @@ export default function Contact() {
             href="https://cal.com/ashil-ckdevs-ocjhtu/product-design-call?overlayCalendar=true"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10  items-center justify-center gap-2 rounded-md bg-black px-4 text-[14px] font-medium text-white transition-opacity hover:opacity-85"
+            className="inline-flex h-10  items-center justify-center  rounded-md bg-black px-3 text-[14px] font-medium text-white transition-opacity hover:opacity-85"
           >
             Book a call
           </a>
 
           <a
             href="mailto:ashilrahimck1@gmail.com"
-            className="inline-flex h-10 w-fit items-center justify-center gap-2 rounded-md bg-[#f2f2f2] px-4 text-[14px] font-medium text-black transition-opacity hover:opacity-85"
+            className="inline-flex h-10 w-fit items-center justify-center gap-2 rounded-md bg-[#f2f2f2] px-3 text-[14px] font-medium text-black transition-opacity hover:opacity-85"
           >
             Email
           </a>
