@@ -2,19 +2,45 @@
 
 import Image from "next/image";
 import Zoom from "react-medium-image-zoom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselApi
+} from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
+
+import { cn } from "@/lib/utils"
 
 const items = [
+
+  {
+    type: "carousel",
+    images: [
+      { src: "/images/sleep-1.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-2.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-3.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-4.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-5.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-6.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-7.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-8.png", w: 1290, h: 2796 },
+      { src: "/images/sleep-9.png", w: 1290, h: 2796 },
+    ],
+  },
 
   { type: "image", src: "/images/shot-1.png", w: 3840, h: 2160 },
 
   { type: "video", src: "/videos/shinybutton2.mp4" },
 
-
   { type: "image", src: "/images/shot-5.png", w: 3840, h: 2160 },
+
+  // 👇 Sleep App Carousel
+
+
   { type: "image", src: "/images/shot-4.png", w: 1600, h: 1200 },
 
   { type: "video", src: "/videos/cap1.mp4" },
-
 
   { type: "image", src: "/images/shot-2.png", w: 3840, h: 2160 },
   { type: "image", src: "/images/shot-6.png", w: 1200, h: 700 },
@@ -22,15 +48,26 @@ const items = [
   { type: "image", src: "/images/shot-3.png", w: 1968, h: 1400 },
   { type: "image", src: "/images/shot-8.png", w: 2400, h: 1124 },
   { type: "image", src: "/images/shot-11.png", w: 2400, h: 1600 },
-
   { type: "image", src: "/images/shot-12.png", w: 2880, h: 1200 },
   { type: "image", src: "/images/shot-13.png", w: 2880, h: 1750 },
 ] as const;
 
-const video = "/videos/shinybutton2.mp4";
-const video1 = "/videos/cap1.mp4";
-
 export default function Gallery() {
+
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
   return (
     <section id="work">
       <div className="mb-10 flex items-baseline justify-between border-b border-border pb-4">
@@ -40,23 +77,56 @@ export default function Gallery() {
       </div>
 
       <div className="columns-1 gap-4 *:mb-4 *:break-inside-avoid">
-
-
         {items.map((item, i) => (
           <div
-            key={item.src}
-            className="overflow-hidden transition-transform duration-300 hover:-translate-y-1"
+            key={i}
+            className="overflow-hidden"
           >
-            {item.type === "video" ? (
-              <video
-                src={item.src}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="h-auto w-full object-cover"
-              />
-            ) : (
+            {/* CAROUSEL */}
+            {item.type === "carousel" && (
+              <Carousel className="w-full" setApi={setApi}>
+                <CarouselContent>
+                  {item.images.map((image) => (
+                    <CarouselItem
+                      key={image.src}
+                      className="basis-1/2 md:basis-1/3 xl:basis-1/4"
+                    >
+                      <div className="mx-auto max-w-55">
+
+                        <Image
+                          src={image.src}
+                          alt="Sleep App"
+                          width={image.w}
+                          height={image.h}
+                          // unoptimized  // remove in production
+                          className="h-auto w-full cursor-grab active:cursor-grabbing rounded-lg object-cover"
+                        />
+
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {/* Dots Navigation */}
+                <div className="mt-3 flex justify-center gap-2">
+                  {Array.from({ length: count }).map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => api?.scrollTo(index)}
+                      className={cn(
+                        "h-2 rounded-full transition-all duration-300",
+                        current === index
+                          ? "w-4 bg-black"
+                          : "w-2 bg-neutral-300 hover:bg-neutral-400"
+                      )}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+
+              </Carousel>
+            )}
+            {/* IMAGE */}
+            {item.type === "image" && (
               <Zoom>
                 <Image
                   src={item.src}
@@ -68,14 +138,29 @@ export default function Gallery() {
                 />
               </Zoom>
             )}
+
+            {/* VIDEO */}
+            {item.type === "video" && (
+              <video
+                src={item.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="h-auto w-full object-cover"
+              />
+            )}
+
+
           </div>
         ))}
       </div>
     </section>
   );
+}
 
-  {/* Lightbox */ }
-  {/* {selected && (
+{/* Lightbox */ }
+{/* {selected && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm animate-in fade-in duration-200"
           onClick={() => setSelected(null)}
@@ -102,4 +187,3 @@ export default function Gallery() {
           </div>
         </div>
       )} */}
-}
