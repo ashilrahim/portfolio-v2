@@ -108,7 +108,7 @@ export default function Gallery() {
                           alt="Sleep App"
                           width={image.w}
                           height={image.h}
-                          unoptimized  // remove in production
+                          // unoptimized  // remove in production
                           className="h-auto w-full cursor-grab active:cursor-grabbing rounded-lg object-cover"
                         />
 
