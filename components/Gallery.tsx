@@ -46,13 +46,12 @@ const items = [
 
   { type: "video", src: "/videos/cap1.mp4" },
 
-  { type: "image", src: "/images/shot-2.png", w: 3840, h: 2160 },
+
   { type: "image", src: "/images/shot-6.png", w: 1200, h: 700 },
-  { type: "image", src: "/images/shot-7.png", w: 2400, h: 1600 },
   { type: "image", src: "/images/shot-3.png", w: 1968, h: 1400 },
   { type: "image", src: "/images/shot-8.png", w: 2400, h: 1124 },
   { type: "image", src: "/images/shot-11.png", w: 2400, h: 1600 },
-  { type: "image", src: "/images/shot-12.png", w: 2880, h: 1200 },
+  { type: "image", src: "/images/shot-2.png", w: 3840, h: 2160 },
   { type: "image", src: "/images/shot-13.png", w: 2880, h: 1750 },
 ] as const;
 
@@ -144,6 +143,7 @@ export default function Gallery() {
                   width={item.w}
                   height={item.h}
                   sizes="100vw"
+                  // unoptimized  // remove in production
                   className="h-auto w-full cursor-zoom-in object-cover rounded-lg"
                 />
               </Zoom>
