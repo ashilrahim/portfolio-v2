@@ -17,15 +17,19 @@ const items = [
   {
     type: "carousel",
     images: [
-      { src: "/images/sleep-1.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-2.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-3.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-4.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-5.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-6.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-7.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-8.png", w: 1290, h: 2796 },
-      { src: "/images/sleep-9.png", w: 1290, h: 2796 },
+      { src: "/images/show-1.jpg", w: 1290, h: 2796 },
+      { src: "/images/show-2.jpg", w: 1290, h: 2796 },
+      { src: "/images/show-3.jpg", w: 1290, h: 2796 },
+
+      // { src: "/images/sleep-1.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-2.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-3.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-4.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-5.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-6.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-7.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-8.png", w: 1290, h: 2796 },
+      // { src: "/images/sleep-9.png", w: 1290, h: 2796 },
     ],
   },
 
@@ -61,12 +65,19 @@ export default function Gallery() {
   useEffect(() => {
     if (!api) return;
 
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap());
-
-    api.on("select", () => {
+    const onSelect = () => {
+      console.log("Selected:", api.selectedScrollSnap());
       setCurrent(api.selectedScrollSnap());
-    });
+    };
+
+    setCount(api.scrollSnapList().length);
+    onSelect();
+
+    api.on("select", onSelect);
+
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
   return (
     <section id="work">
@@ -89,16 +100,16 @@ export default function Gallery() {
                   {item.images.map((image) => (
                     <CarouselItem
                       key={image.src}
-                      className="basis-1/2 md:basis-1/3 xl:basis-1/4"
+                      className="basis-auto w-full"
                     >
-                      <div className="mx-auto max-w-55">
+                      <div className="mx-auto">
 
                         <Image
                           src={image.src}
                           alt="Sleep App"
                           width={image.w}
                           height={image.h}
-                          // unoptimized  // remove in production
+                          unoptimized  // remove in production
                           className="h-auto w-full cursor-grab active:cursor-grabbing rounded-lg object-cover"
                         />
 
