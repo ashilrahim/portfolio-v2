@@ -66,7 +66,6 @@ export default function Gallery() {
     if (!api) return;
 
     const onSelect = () => {
-      console.log("Selected:", api.selectedScrollSnap());
       setCurrent(api.selectedScrollSnap());
     };
 
@@ -95,12 +94,12 @@ export default function Gallery() {
           >
             {/* CAROUSEL */}
             {item.type === "carousel" && (
-              <Carousel className="w-full" setApi={setApi}>
+              <Carousel className="mx-auto w-full max-w-[950px]" setApi={setApi}>
                 <CarouselContent>
                   {item.images.map((image) => (
                     <CarouselItem
                       key={image.src}
-                      className="basis-auto w-full"
+                      className="basis-full"
                     >
                       <div className="mx-auto">
 
@@ -109,7 +108,7 @@ export default function Gallery() {
                           alt="Sleep App"
                           width={image.w}
                           height={image.h}
-                          unoptimized  // remove in production
+                          // unoptimized  // remove in production
                           className="h-auto w-full cursor-grab active:cursor-grabbing rounded-lg object-cover"
                         />
 
@@ -145,7 +144,7 @@ export default function Gallery() {
                   width={item.w}
                   height={item.h}
                   sizes="100vw"
-                  className="h-auto w-full cursor-zoom-in object-cover"
+                  className="h-auto w-full cursor-zoom-in object-cover rounded-lg"
                 />
               </Zoom>
             )}
@@ -158,7 +157,7 @@ export default function Gallery() {
                 muted
                 loop
                 playsInline
-                className="h-auto w-full object-cover"
+                className="h-auto w-full object-cover *:rounded-lg"
               />
             )}
 
