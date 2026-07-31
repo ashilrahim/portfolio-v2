@@ -17,9 +17,9 @@ const items = [
   {
     type: "carousel",
     images: [
-      { src: "/images/show-1.jpg", w: 1290, h: 2796 },
-      { src: "/images/show-2.jpg", w: 1290, h: 2796 },
-      { src: "/images/show-3.jpg", w: 1290, h: 2796 },
+      { src: "/images/show-1.jpg", w: 3840, h: 2160 },
+      { src: "/images/show-2.jpg", w: 3840, h: 2160 },
+      { src: "/images/show-3.jpg", w: 3840, h: 2160 },
 
       // { src: "/images/sleep-1.png", w: 1290, h: 2796 },
       // { src: "/images/sleep-2.png", w: 1290, h: 2796 },
@@ -86,7 +86,7 @@ export default function Gallery() {
         </h2>
       </div>
 
-      <div className="columns-1 gap-4 *:mb-4 *:break-inside-avoid">
+      <div className="flex flex-col gap-4">
         {items.map((item, i) => (
           <div
             key={i}
@@ -94,7 +94,7 @@ export default function Gallery() {
           >
             {/* CAROUSEL */}
             {item.type === "carousel" && (
-              <Carousel className="mx-auto w-full max-w-[950px]" setApi={setApi}>
+              <Carousel className="mx-auto w-ful" setApi={setApi}>
                 <CarouselContent>
                   {item.images.map((image) => (
                     <CarouselItem
@@ -108,7 +108,7 @@ export default function Gallery() {
                           alt="Sleep App"
                           width={image.w}
                           height={image.h}
-                          // unoptimized  // remove in production
+                          unoptimized  // remove in production
                           className="h-auto w-full cursor-grab active:cursor-grabbing rounded-lg object-cover"
                         />
 
@@ -157,7 +157,7 @@ export default function Gallery() {
                 muted
                 loop
                 playsInline
-                className="h-auto w-full object-cover *:rounded-lg"
+                className="h-auto w-full object-cover rounded-lg"
               />
             )}
 
