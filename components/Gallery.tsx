@@ -14,27 +14,18 @@ import { cn } from "@/lib/utils"
 
 const items = [
 
-  {
-    type: "carousel",
-    images: [
-      { src: "/images/show-1.jpg", w: 3840, h: 2160 },
-      { src: "/images/show-2.jpg", w: 3840, h: 2160 },
-      { src: "/images/show-3.jpg", w: 3840, h: 2160 },
+  // {
+  //   type: "carousel",
+  //   images: [
+  //     { src: "/images/show-1.jpg", w: 3840, h: 2160 },
+      
+  //   ],
+  // },
 
-      // { src: "/images/sleep-1.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-2.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-3.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-4.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-5.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-6.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-7.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-8.png", w: 1290, h: 2796 },
-      // { src: "/images/sleep-9.png", w: 1290, h: 2796 },
-    ],
-  },
-
+  { type: "image", src: "/images/show-1.jpg", w: 3840, h: 2160 },
   { type: "image", src: "/images/shot-1.png", w: 3840, h: 2160 },
-
+  
+  
   { type: "video", src: "/videos/shinybutton2.mp4" },
 
   { type: "image", src: "/images/shot-5.png", w: 3840, h: 2160 },
@@ -91,49 +82,48 @@ export default function Gallery() {
             key={i}
             className="overflow-hidden"
           >
-            {/* CAROUSEL */}
-            {item.type === "carousel" && (
-              <Carousel className="mx-auto w-ful" setApi={setApi}>
-                <CarouselContent>
-                  {item.images.map((image) => (
-                    <CarouselItem
-                      key={image.src}
-                      className="basis-full"
-                    >
-                      <div className="mx-auto">
+            {/*             
+              // <Carousel className="mx-auto w-ful" setApi={setApi}>
+              //   <CarouselContent>
+              //     {item.images.map((image) => ( */}
+            {/* //       <CarouselItem */}
+            {/* //         key={image.src}
+              //         className="basis-full"
+              //       >
+              //         <div className="mx-auto">
 
-                        <Image
-                          src={image.src}
-                          alt="Sleep App"
-                          width={image.w}
-                          height={image.h}
-                          // unoptimized  // remove in production
-                          className="h-auto w-full cursor-grab active:cursor-grabbing rounded-lg object-cover"
-                        />
+              //           <Image */}
+            {/* //             src={image.src}
+              //             alt="Sleep App"
+              //             width={image.w}
+              //             height={image.h}
+              //             // unoptimized  // remove in production
+              //             className="h-auto w-full cursor-grab active:cursor-grabbing rounded-lg object-cover"
+              //           />
 
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                {/* Dots Navigation */}
-                <div className="mt-3 flex justify-center gap-2">
-                  {Array.from({ length: count }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => api?.scrollTo(index)}
-                      className={cn(
-                        "h-2 rounded-full transition-all duration-300",
-                        current === index
-                          ? "w-4 bg-black"
-                          : "w-2 bg-neutral-300 hover:bg-neutral-400"
-                      )}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
+              //         </div> */}
+            {/* //       </CarouselItem> */}
+            {/* //     ))}
+              //   </CarouselContent> */}
+               {/* Dots Navigation */}
+            {/* //   <div className="mt-3 flex justify-center gap-2">
+              //     {Array.from({ length: count }).map((_, index) => ( */}
+            {/* //       <button */}
+            {/* //         key={index}
+              //         onClick={() => api?.scrollTo(index)}
+              //         className={cn( */}
+            {/* //           "h-2 rounded-full transition-all duration-300",
+              //           current === index
+              //             ? "w-4 bg-black"
+              //             : "w-2 bg-neutral-300 hover:bg-neutral-400"
+              //         )}
+              //         aria-label={`Go to slide ${index + 1}`}
+              //       />
+              //     ))}
+              //   </div> */}
 
-              </Carousel>
-            )}
+            {/* // </Carousel> */}
+
             {/* IMAGE */}
             {item.type === "image" && (
               <Zoom>
